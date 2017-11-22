@@ -36,13 +36,21 @@ df2 = pd.DataFrame(list_of_hashes2)
 #create directory to place data downloaded neatly
 path = 'Desktop/Localisation2'
 os.mkdir(path)
-
+path = 'Desktop/Localisation2/Additional'
+os.mkdir(path)
+#Timestamp for end user to check when up to date .txt
 clock = time.strftime("%I:%M:%S\n")
 calender = time.strftime("%d/%m/%Y")
-
-with open("Desktop/Localisation2/ZLastUpdated.txt", "w") as text_file:
+with open("Desktop/Localisation2/Additional/LastUpdated.txt", "w") as text_file:
     text_file.write(clock)
     text_file.write(calender)
+
+with open("Desktop/Localisation2/Additional/usage_directions.txt", "w") as Direction:
+    Direction.write("This working copy requires you to run from Desktop\n"
+                    "ensure python on the system\n"
+                    "in terminal enter:\n"
+                    "python desktop/localisation_updater/spreadsheet.py desktop/localisation2\n"
+                    "Overwrite is currently not implemented, ensure files are deleted then repeat process to update language files/strings")
 
 #converting fro df to csv
 df.to_csv('Desktop/Localisation2/1_iOS.csv', index=False, header=False)
