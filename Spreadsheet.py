@@ -44,9 +44,6 @@ with open("Desktop/Localisation2/ZLastUpdated.txt", "w") as text_file:
     text_file.write(clock)
     text_file.write(calender)
 
-print clock
-print calender
-
 #converting fro df to csv
 df.to_csv('Desktop/Localisation2/1_iOS.csv', index=False, header=False)
 df2.to_csv('Desktop/Localisation2/1_Android.csv', index=False, header=False)
