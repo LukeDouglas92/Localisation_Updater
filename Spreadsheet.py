@@ -6,6 +6,7 @@ import xml.etree.ElementTree as xml
 import os
 import plistlib
 import csv
+import time
 import sys, os, getopt, csv, xml.etree.ElementTree as ET
 from xml.dom import minidom
 
@@ -36,10 +37,19 @@ df2 = pd.DataFrame(list_of_hashes2)
 path = 'Desktop/Localisation2'
 os.mkdir(path)
 
+clock = time.strftime("%I:%M:%S\n")
+calender = time.strftime("%d/%m/%Y")
+
+with open("Desktop/Localisation2/ZLastUpdated.txt", "w") as text_file:
+    text_file.write(clock)
+    text_file.write(calender)
+
+print clock
+print calender
 
 #converting fro df to csv
-df.to_csv('Desktop/Localisation2/test.csv', index=False, header=False)
-df2.to_csv('Desktop/Localisation2/test2.csv', index=False, header=False)
+df.to_csv('Desktop/Localisation2/1_iOS.csv', index=False, header=False)
+df2.to_csv('Desktop/Localisation2/1_Android.csv', index=False, header=False)
 
 # -*- coding: utf-8 -*-
 # Script takes a csv and creates strings for Android (.xml) and iOS (.Strings).
@@ -64,8 +74,10 @@ except IndexError:
 if not os.path.exists(fileDestination):
     os.makedirs(fileDestination)
 
+
+
 # Read from csv
-f = open('Desktop/Localisation2/test.csv')
+f = open('Desktop/Localisation2/1_iOS.csv')
 csv_f = csv.reader(f)
 
 # Determine the number of languages from the csv
